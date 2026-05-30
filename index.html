@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RankLens - Comparador de Rankings</title>
+  <meta name="description" content="Aplicação web para comparar rankings e calcular contagem de inversões de forma visual e prática." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-card">
+        <div class="eyebrow"><span></span> Ferramenta prática com Contagem de Inversões</div>
+        <h1>RankLens</h1>
+        <p class="lead">
+          Compare duas listas em formato de ranking, descubra quantas inversões existem entre elas e visualize onde a ordem muda.
+          É útil para priorização de tarefas, preferência de usuários, avaliação de enquetes e qualquer cenário de ordenação.
+        </p>
+      </article>
+
+      <aside class="side-card">
+        <h2 class="mini-title">Como funciona</h2>
+        <ol class="steps">
+          <li>Digite ou cole duas listas com os mesmos nomes.</li>
+          <li>Clique em <strong>Analisar ranking</strong>.</li>
+          <li>Veja a quantidade de inversões e o nível de desacordo.</li>
+        </ol>
+        <div class="tag-list">
+          <span class="tag">prioridade de projetos</span>
+          <span class="tag">comparar enquetes</span>
+          <span class="tag">reordenar playlists</span>
+          <span class="tag">avaliar consenso</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="panel panel--main">
+      <div class="panel-header">
+        <div>
+          <h2>Comparar rankings</h2>
+          <p class="hint">Use itens separados por vírgula, ponto e vírgula ou uma linha por item.</p>
+        </div>
+        <div class="controls">
+          <button class="ghost" id="fillExample" type="button">Carregar exemplo</button>
+          <button class="secondary" id="swapLists" type="button">Trocar listas</button>
+          <button class="primary" id="analyze" type="button">Analisar ranking</button>
+        </div>
+      </div>
+
+      <div class="inputs">
+        <div class="field">
+          <label for="rankingA">Ranking A</label>
+          <textarea id="rankingA" spellcheck="false" placeholder="Ex.: Ana, Bruno, Carla, Diego"></textarea>
+        </div>
+        <div class="field">
+          <label for="rankingB">Ranking B</label>
+          <textarea id="rankingB" spellcheck="false" placeholder="Ex.: Carla, Ana, Diego, Bruno"></textarea>
+        </div>
+      </div>
+
+      <div class="error" id="errorBox"></div>
+
+      <div class="result-grid">
+        <div class="result-card">
+          <div class="result-card__header">
+            <h3>Resumo</h3>
+            <span class="badge" id="coverageBadge">Pronto para análise</span>
+          </div>
+          <div class="summary" id="summary"></div>
+          <div class="meter-wrap">
+            <div class="meter-meta">
+              <span>Desacordo entre rankings</span>
+              <strong id="agreementLabel">0%</strong>
+            </div>
+            <div class="meter">
+              <div class="meter-fill" id="agreementBar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card__header">
+            <h3>Inversões encontradas</h3>
+            <span class="badge badge--accent" id="inversionBadge">0 pares</span>
+          </div>
+          <div class="pairs" id="pairs">
+            <div class="empty">Aguardando uma comparação válida.</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        Dica: itens presentes em apenas uma lista são ignorados no cálculo e informados no resumo.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
